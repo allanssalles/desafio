@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+		 	<div>
+		 		<h1>Lista dos seus Dogs</h1>
+		 	</div>
+			<div>
+		       	<table class="table table-hover">
+			        <thead>
+				        <tr>
+				            <th>Nome</th>
+				            <th>Raça</th>
+				        </tr>
+			        </thead>
+			        <tr th:each="dog : ${dogs}">
+			            <td> <span th:text="${dog.name}"></span> </td>
+			            <td> <span th:text="${dog.breed.name}"></span> </td>
+			        </tr>
+		   		</table>
+			</div>
+			
+			<form action="save" method="post">
+			    <div class="form-group">
+			        <label for="nome">Nome</label>
+			        <input type="text" class="form-control" id="name" name="name" placeholder="Nome" />
+			    </div>
+			    <div class="form-group">
+			        <label for="breed">Raça</label>
+			        <!--  <input type="text" class="form-control" id="breed" name="breed" placeholder="Raça" /> -->
+			    	<!-- <select class="form-control" id="breed" name="breed">
+						<option th:each="breed : ${breeds}" 
+							  th:value="${breed.name}" 
+							  th:text="${breed.name}" />
+					</select> -->
+					<input list="breeds" class="form-control" id="breed" name="breed" placeholder="Raça"/>  
+					<datalist id="breeds">
+			            <option th:each="breed : ${breeds}" th:value="${breed.name}" th:text="${breed.name}">
+			        </datalist>
+			        
+			    </div>
+			    <button type="submit" class="btn btn-success">Adicionar meu Dog</button>
+            </form>
+		</div>
+	</body>
+</html>
