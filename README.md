@@ -21,7 +21,9 @@ The project is using
 	    "breed": "yourDogsBreed"
     }
     
+    ![postJSON](postJSON.jpg)
+    
     - Or you can use the GET method to get a list of your dog buddies
  
- 
+    ![getJSON](getJSON.jpg)
   
